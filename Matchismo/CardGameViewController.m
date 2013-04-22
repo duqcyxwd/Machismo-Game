@@ -47,6 +47,23 @@
     sender.selected = !sender.isSelected;
     self.flipCount++;
 }
-
+/*- (IBAction)flipCard:(UIButton *)sender {
+    // Only draw on face up (ie. on button not selected)
+    if (!sender.isSelected) {
+        NSLog(@"Draw card");
+        Card *card = [self.playingCardDeck drawRandomCard];
+        if (!card) {
+            NSLog(@"Re-initialize deck and draw card again");
+            card = [[self.playingCardDeck init] drawRandomCard];
+            self.flipCount = 0;
+        }
+        
+        NSLog(@"Card: %@", card.contents);
+        [sender setTitle:card.contents forState:UIControlStateSelected];
+        self.flipCount++;
+    }
+    
+    sender.selected = !sender.isSelected;
+}  */
 
 @end
