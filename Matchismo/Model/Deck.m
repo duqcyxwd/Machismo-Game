@@ -37,6 +37,19 @@
         unsigned index = arc4random() % self.cards.count;
         randomCard = self.cards[index];
         [self.cards removeObjectAtIndex:index];
+        NSLog(@"Cards Count: %d", self.cards.count);
+    }
+    return randomCard;
+}
+
+
+- (Card *)pickTopCard
+{
+    Card * randomCard = nil;
+    if (self.cards.count) {
+        randomCard = self.cards[self.cards.count-1];
+        [self.cards removeObjectAtIndex:self.cards.count-1];
+        NSLog(@"Cards Count: %d", self.cards.count);
     }
     return randomCard;
 }

@@ -15,4 +15,5 @@
 
 - (Card *)drawRandomCard;
 
+- (Card *)pickTopCard;
 @end

@@ -29,41 +29,39 @@
 - (void) setCardButtons:(NSArray *)cardButtons
 {
     _cardButtons = cardButtons;
-    for (UIButton *cardButtons in self.cardButtons) {
-        Card *card = [self.deck drawRandomCard];
-        [cardButtons setTitle:card.contents forState:UIControlStateSelected];
-    }
 }
 
 - (void) setFlipCount:(int)flipCount
 {
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-        NSLog(@"Flips updated to %d", self.flipCount);
+    NSLog(@"Flips updated to %d", self.flipCount);
+}
+
+- (IBAction)flipAndHaha:(UIButton *)sender
+{
+    
 }
 
 - (IBAction)flipCard:(UIButton *)sender
 {
-    sender.selected = !sender.isSelected;
-    self.flipCount++;
-}
-/*- (IBAction)flipCard:(UIButton *)sender {
-    // Only draw on face up (ie. on button not selected)
-    if (!sender.isSelected) {
-        NSLog(@"Draw card");
-        Card *card = [self.playingCardDeck drawRandomCard];
+    //sender.selected = !sender.isSelected;
+    if (!sender.isSelected)
+    {
+        //Card *card = [self.deck drawRandomCard];
+        Card *card = [self.deck pickTopCard];
         if (!card) {
-            NSLog(@"Re-initialize deck and draw card again");
-            card = [[self.playingCardDeck init] drawRandomCard];
-            self.flipCount = 0;
+            NSLog(@"There is no Card");
+            [sender setTitle: @"X" forState:UIControlStateSelected];
+            [sender setTitle: @"X" forState:UIControlStateNormal];
+        } else {
+            [sender setTitle:card.contents forState:UIControlStateSelected];
+            self.flipCount++;
         }
-        
-        NSLog(@"Card: %@", card.contents);
-        [sender setTitle:card.contents forState:UIControlStateSelected];
-        self.flipCount++;
     }
     
+    
     sender.selected = !sender.isSelected;
-}  */
 
+}
 @end
