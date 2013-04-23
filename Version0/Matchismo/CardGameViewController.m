@@ -14,10 +14,22 @@
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (strong, nonatomic) Deck *deck;
-
+@property (nonatomic, getter=isRandomPick) BOOL randomPick;
 @end
 
 @implementation CardGameViewController
+
+- (BOOL) randomPick{
+    if (_randomPick == nil) {
+        _randomPick = NO;
+    }
+    return _randomPick;
+}
+
+
+- (IBAction)RandomPickSwitcher:(UISwitch *)sender {
+
+}
 
 - (Deck *)deck
 {
